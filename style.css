@@ -1,0 +1,154 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #64748b;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--secondary);
+    color: white;
+    transition: 0.3s;
+}
+
+button.active-btn {
+    background-color: var(--primary);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Form Styling */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* Card Grid for Students */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.student-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.student-card h4 {
+    margin: 10px 0 5px 0;
+}
+
+/* Scanner Styling */
+#reader {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.attendance-log {
+    margin-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.attendance-log ul {
+    list-style: none;
+    padding: 0;
+}
+
+.attendance-log li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.danger-btn {
+    background-color: #dc2626;
+}
+.print-btn {
+    background-color: #16a34a;
+}
+
+/* --- PRINT STYLE (Hanya mencetak kartu) --- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #student-list, #student-list * {
+        visibility: visible;
+    }
+    #student-list {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 kartu per baris saat print */
+        gap: 20px;
+    }
+    .student-card {
+        border: 1px solid #000;
+        break-inside: avoid;
+    }
+}
