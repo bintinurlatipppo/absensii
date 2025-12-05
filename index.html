@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Absensi Barcode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Sistem Absensi Sekolah</h1>
+            <nav>
+                <button onclick="showSection('register')" class="active-btn" id="btn-reg">1. Registrasi & Cetak</button>
+                <button onclick="showSection('scan')" id="btn-scan">2. Scan Absensi</button>
+            </nav>
+        </header>
+
+        <section id="register-section">
+            <div class="input-group">
+                <input type="text" id="studentName" placeholder="Masukkan Nama Siswa...">
+                <button onclick="addStudent()">Buat Kartu</button>
+            </div>
+            
+            <div class="action-bar">
+                <button onclick="window.print()" class="print-btn">🖨️ Cetak Semua Kartu</button>
+                <button onclick="clearData()" class="danger-btn">⚠️ Hapus Semua Data</button>
+            </div>
+
+            <div id="student-list" class="card-grid">
+                </div>
+        </section>
+
+        <section id="scan-section" class="hidden">
+            <div class="scanner-container">
+                <div id="reader"></div>
+                <p class="instruction">Arahkan barcode siswa ke kamera</p>
+            </div>
+
+            <div class="attendance-log">
+                <h3>Log Kehadiran Hari Ini</h3>
+                <ul id="attendance-list">
+                    </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
